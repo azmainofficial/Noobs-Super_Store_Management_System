@@ -12,92 +12,166 @@ using namespace std;
 bool admin_login_states = false;
 bool sales_login_states = false;
 
+int colors[] ={ FOREGROUND_RED | FOREGROUND_INTENSITY, 
+                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+                FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+                FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+                FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+                FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY,
+                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+                FOREGROUND_RED | FOREGROUND_INTENSITY, 
+                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+                FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+                FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+                FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+                FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY,
+                FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY  };
+
+
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void loadingBar() {
+    int duration = 50;
+    const int totalWidth = 50;
+    for (int i = 0; i <= totalWidth; ++i) {
+      
+
+        system("cls");
+        float progress = static_cast<float>(i) / totalWidth;
+        int barWidth = static_cast<int>(progress * totalWidth);
+        cout << "\033[1;32m";
+        cout << "+-------------------------------------------------------------------------------------------------------------------+" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "\033[0m";
+        cout << "||               _______   _______   _______ _________    _________              _          _______                ||" << endl;
+        cout << "                |       | |       | |            |            |     |         | | \\      | |                       " << endl;
+        cout << "||              |       | |       | |            |            |     |         | |  \\     | |                       ||" << endl;
+        cout << "                |_______  |       | |_______     |            |     |         | |   \\    | |_______                " << endl;
+        cout << "||                      | |       | |            |            |     |         | |    \\   | |                       ||" << endl;
+        cout << "                |       | |       | |            |            |     |         | |     \\  | |                       " << endl;
+        cout << "||              |_______| |_______| |           _|_          _|_    |_________| |      \\_| |_______                ||" << endl;
+        cout << "                                                                                                                     " << endl;
+        cout << "||                                                                                                                 ||" << endl;
+        cout << "                                                                                                                     " << endl;
+        cout << "||                                                                                                                 ||" << endl;
+        cout << "                                                                                                                     " << endl;
+        cout << "||                                                                                                                 ||" << endl;
+        cout << "                                                                                                                     " << endl;
+        cout << "||                                                     LOADING                                                     ||" << endl;
+
+        std::cout << "\r                              [";
+        for (int j = 0; j < barWidth; ++j) {
+            std::cout << "#";
+        }
+        for (int j = barWidth; j < totalWidth; ++j) {
+            std::cout << " ";
+        }
+        std::cout << "] " << static_cast<int>(progress * 100.0f) << "%";
+        std::cout.flush();
+        cout<<"                                 " << endl;
+    cout << "||                                                                                                                 ||" << endl;
+    cout << "                                                                                                                     " << endl;
+    cout << "||                                                                                                                 ||" << endl;
+    cout << "                                                                                                                     " << endl;
+    cout << "\033[1;32m";
+    cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+    cout << "+-------------------------------------------------------------------------------------------------------------------+" << endl;
+    cout << "\033[0m";
+        Sleep(duration);
+    }
+}
+
 void top_nav()
 {
+    cout << "\033[1;32m";
     cout << "+-------------------------------------------------------------------------------------------------------------------+" << endl;
     cout << "|||||||||||||||||||||||||||||||||||||||||||    Soft Tune Super Store    |||||||||||||||||||||||||||||||||||||||||||||" << endl;
     cout << "+-------------------------------------------------------------------------------------------------------------------+" << endl;
+    cout << "\033[0m";
 }
 
 void caption()
 {
+    cout << "\033[1;32m";
     cout << "\n+-------------------------------------------------------------------------------------------------------------------+" << endl;
     cout << "|||||||||||||||||||||||||||||||       Allah Is The Almighty. May Allah Bless You !!       |||||||||||||||||||||||||||" << endl;
     cout << "+-------------------------------------------------------------------------------------------------------------------+" << endl;
-    cout << "\nEnter your choice :";
+    cout << "\033[0m";
+    cout << "\nEnter your command:";
 }
 
 void welcome_1_temp()
 {
-    cout << "\n\t\t\t\t\t---------------: WELCOME :--------------\n\n\n";
-    cout << "\n\t\t\t\t\t    1. Stock View";
-    cout << "\n\t\t\t\t\t    2. Login";
-    cout << "\n\t\t\t\t\t    3. Exit\n\n\n\n\n";
+    cout << "\n\t\t\t\t\t\n\n\n";
+    cout << "\n\t\t\t\t\t    1. View Available Products";
+    cout << "\n\t\t\t\t\t    2. Login to the System";
+    cout << "\n\t\t\t\t\t    3. Exit from the System\n\n\n\n\n\n";
 }
 
 void login_temp()
 {
-    cout << "\n\t\t\t\t\t---------------: WELCOME :--------------\n\n\n";
-    cout << "\n\t\t\t\t\t    WHOM DO YOU WANT TO SIGN IN AS:";
-    cout << "\n\t\t\t\t\t    1.SALESMAN";
-    cout << "\n\t\t\t\t\t    2.ADMINISTRATOR";
-    cout << "\n\t\t\t\t\t    3.EXIT";
+    cout << "\n\t\t\t\t\t-------------: Login Panel :------------\n\n\n";
+    cout << "\n\t\t\t\t\t             Login as\n\n\n";
+    cout << "\n\t\t\t\t\t    1. Sales Executive";
+    cout << "\n\t\t\t\t\t    2. Admin";
+    cout << "\n\t\t\t\t\t    3. Back to Main panel\n\n\n\n\n";
 }
 
 void admin_panel_temp()
 {
-    cout << "\n\t\t\t\t\t---------------: WELCOME :--------------";
-    cout << "\n\t\t\t\t\t-------------: ADMIN PANEL :------------\n\n\n";
-    cout << "\t\t\t\t\t\t1.Inventory Management\n";
-    cout << "\t\t\t\t\t\t2.Sales Management\n";
-    cout << "\t\t\t\t\t\t3.Staff Management\n";
-    cout << "\t\t\t\t\t\t4.Membership Management\n";
-    cout << "\t\t\t\t\t\t5.Logout\n";
+    cout << "\n\t\t\t\t\t-------------: Admin Panel :------------\n\n\n";
+    cout << "\t\t\t\t\t\t   1. Inventory Management\n";
+    cout << "\t\t\t\t\t\t   2. Sales Management\n";
+    cout << "\t\t\t\t\t\t   3. Staff Management\n";
+    cout << "\t\t\t\t\t\t   4. Membership Management\n";
+    cout << "\t\t\t\t\t\t   5. Logout\n";
 }
 
 void inventory_management_panel_temp()
 {
-    cout << "\n\t\t\t\t\t-----: INVENTORY MANAGEMENT PANEL :-----\n\n\n";
-    cout << "\t\t\t\t\t\t1.Search From Inventory\n";
-    cout << "\t\t\t\t\t\t2.Full Inventory View\n";
-    cout << "\t\t\t\t\t\t3.Add Goods To Inventory\n";
-    cout << "\t\t\t\t\t\t4.Remove Goods From Inventory\n";
-    cout << "\t\t\t\t\t\t5.Back To Admin Panel\n";
+    cout << "\n\t\t\t\t\t-----: Inventory Management Panel :-----\n\n\n";
+    cout << "\t\t\t\t\t\t   1. Search From Inventory\n";
+    cout << "\t\t\t\t\t\t   2. Full Inventory View\n";
+    cout << "\t\t\t\t\t\t   3. Add Goods To Inventory\n";
+    cout << "\t\t\t\t\t\t   4. Remove Goods From Inventory\n";
+    cout << "\t\t\t\t\t\t   5. Back To Admin Panel\n";
 }
 
 void staff_management_panel_temp()
 {
-    cout << "\n\t\t\t\t\t-------: STAFF MANAGEMENT PANEL :-------\n\n\n";
-    cout << "\t\t\t\t\t\t1.Staff Information Panel\n";
-    cout << "\t\t\t\t\t\t2.Add Stuff\n";
-    cout << "\t\t\t\t\t\t3.Remove Stuff\n";
-    cout << "\t\t\t\t\t\t4.Back To Admin Panel\n";
+    cout << "\n\t\t\t\t\t-------: Staff Management Panel :-------\n\n\n";
+    cout << "\t\t\t\t\t\t   1. Staff Information Panel\n";
+    cout << "\t\t\t\t\t\t   2. Add Stuff\n";
+    cout << "\t\t\t\t\t\t   3. Remove Stuff\n";
+    cout << "\t\t\t\t\t\t   4. Back To Admin Panel\n";
 }
 
 void staff_information_panel_temp()
 {
-    cout << "\n\t\t\t\t\t-------: STAFF INFORMATION PANEL :-------\n\n\n";
-    cout << "\t\t\t\t\t\t1.Full Staff List\n";
-    cout << "\t\t\t\t\t\t2.Search By ID\n";
-    cout << "\t\t\t\t\t\t3.Search By Name\n";
-    cout << "\t\t\t\t\t\t4.Search By Position\n";
-    cout << "\t\t\t\t\t\t5.Back To Staff Management Panel\n";
+    cout << "\n\t\t\t\t\t-------: Staff Information Panel :-------\n\n\n";
+    cout << "\t\t\t\t\t\t    1. Full Staff List\n";
+    cout << "\t\t\t\t\t\t    2. Search By ID\n";
+    cout << "\t\t\t\t\t\t    3. Search By Name\n";
+    cout << "\t\t\t\t\t\t    4. Search By Position\n";
+    cout << "\t\t\t\t\t\t    5. Back To Staff Management Panel\n";
 }
 
 void membership_management_panel_temp()
 {
-    cout << "\n\t\t\t\t\t-----: MEMBERSHIP MANAGEMENT PANEL :----\n\n\n";
-    cout << "\t\t\t\t\t\t1.Members Information List\n";
-    cout << "\t\t\t\t\t\t2.New Member\n";
-    cout << "\t\t\t\t\t\t3.Back To Admin Panel\n";
+    cout << "\n\t\t\t\t\t-----: Membership Management Panel :----\n\n\n";
+    cout << "\t\t\t\t\t\t    1. Members Information List\n";
+    cout << "\t\t\t\t\t\t    2. New Member\n";
+    cout << "\t\t\t\t\t\t    3. Back To Admin Panel\n";
 }
 
 class Login{
     private:
         string admin_username = "a";
         string admin_password = "a";
-        string sales_username = "Sale";
-        string sales_password = "sale@1";
+        string sales_username = "s";
+        string sales_password = "s";
 
     public:
         bool login(string username, string password){
@@ -198,6 +272,7 @@ class Product{
 
             if(!Product_database){
             cout << "Error opening the Product Database!\n";
+            Sleep(2000);
             return;
             }
             P_database_top_nav();
@@ -220,7 +295,8 @@ class Product{
             }//While
 
             if (!found) {
-                cout << "Product with name '" << name << "' not found." << endl;
+                cout << "\t\t\t\t\tProduct with name '" << name << "' not found." << endl;
+                Sleep(2000);
             }
             Product_database.close();
         }//Search by name
@@ -233,6 +309,7 @@ class Product{
             if(!Product_database || !tempFile) {
 
                 cout << "Error opening the Product Database!\n";
+                Sleep(2000);
                 return;
             }
 
@@ -274,9 +351,11 @@ class Product{
 
             if(found) {
                 cout << "Product quantity updated in inventory." << endl;
+                Sleep(2000);
             }
             else{
                 cout << "Product added to inventory successfully." << endl;
+                Sleep(2000);
             }
     }
 
@@ -287,6 +366,7 @@ class Product{
 
             if(!Product_database || !tempFile) {
                 cout << "Error opening the Product Database!\n";
+                Sleep(2000);
                 return;
             }
 
@@ -314,7 +394,8 @@ class Product{
                     }
                     else{
                     cout << "Error: Not enough quantity in stock to remove!" << endl;
-                    tempFile << line << endl; 
+                    tempFile << line << endl;
+                    Sleep(2000);
                     }
                 }
                 else{
@@ -330,9 +411,11 @@ class Product{
 
             if(found){
                 cout << "Goods removed from inventory successfully!" << endl;
+                Sleep(2000);
             }
             else{
                 cout << "Product with ID '" << productId << "' not found in the inventory." << endl;
+                Sleep(2000);
             }
         }
 
@@ -388,6 +471,9 @@ public:
         Employee_database.open("employee.txt", ios::app | ios::out);
         Employee_database << this->E_store_id << "$" << this->E_name << "$" << this->E_mobile_no << "$" << this->E_permanent_address << "$" << this->E_nid_no << "$" << this->E_position << "$" << this->E_bank_acc << endl;
         Employee_database.close();
+        cout << "\t\t\t\tEmployee Data added successfully!" << endl;
+        Sleep(2000);
+
     }
 
     void remove_from_database(string id)
@@ -417,11 +503,13 @@ public:
             remove("employee.txt");
             rename("temp_employee.txt", "employee.txt");
             cout << "\n\n\n\t\t\t\t\tEmployee data removed successfully!" << endl;
+            Sleep(2000);
         }
         else
         {
             remove("temp_employee.txt");
             cout << "\n\n\n\t\t\t\t\tEmployee ID not found in the database." << endl;
+            Sleep(2000);
         }
     }
 
@@ -458,6 +546,7 @@ public:
         if (!found)
         {
             cout << "No employee found with the name: " << name << endl;
+            Sleep(2000);
         }
     }
 
@@ -495,6 +584,7 @@ public:
         if (!found)
         {
             cout << "No employee found with the ID: " << id << endl;
+            Sleep(2000);
         }
     }
 
@@ -532,6 +622,7 @@ public:
         if (!found)
         {
             cout << "No employee found with the position: " << position << endl;
+            Sleep(2000);
         }
     }
 
@@ -574,6 +665,7 @@ class Member{
 
             if (!Member_database) {
                 cout << "Error opening file!" << endl;
+                Sleep(2000);
                 return;
             }
 
@@ -581,6 +673,7 @@ class Member{
 
             Member_database.close();
             cout << "\n\n\t\t\t\t\tNew member added successfully!" << endl;
+            Sleep(2000);
         }
 
         void M_database_top_nav(){
@@ -625,6 +718,7 @@ class Cart{
 
         fstream Product_database;
         fstream Cart_database;
+        fstream Sales_record_database;
 
         void C_top_nav()
         {
@@ -649,7 +743,7 @@ class Cart{
             string line;
             while (getline(Cart_database,line))
             {
-                string p_id, p_name, p_category, p_price, p_quantity;
+                string p_id, p_name, p_price, p_quantity;
                 stringstream ss(line);
                 getline(ss, p_id, '$');
                 getline(ss, p_name, '$');
@@ -670,7 +764,8 @@ class Cart{
             ofstream Temp_database("Temp_database.txt");
 
             if(!Product_database || !Cart_database || !Temp_database) {
-                cout << "Error opening database files." << endl;
+                cout << "\t\t\t\tError opening database files." << endl;
+                Sleep(2000);
                 return;
             }
 
@@ -687,7 +782,8 @@ class Cart{
                 if (p_id == product_id) {
                     int available_quantity = stoi(p_quantity);
                     if (quantity > available_quantity) {
-                        cout << "Not enough stock available!" << endl;
+                        cout << "\t\t\t\tNot enough stock available!" << endl;
+                        Sleep(2000);
                         return;
                     }
 
@@ -698,7 +794,8 @@ class Cart{
 
                     Cart_database << p_id << "$" << p_name << "$" << quantity << "$" << p_price << endl;
 
-                    cout << "Product added to cart successfully!" << endl;
+                    cout << "\t\t\t\tProduct added to cart successfully!" << endl;
+                    Sleep(2000);
                 }
                 else{
                     Temp_database << line << endl;
@@ -719,18 +816,44 @@ class Cart{
 
             if (!Cart_database || !Sales_records) {
                 cout << "Error opening database files." << endl;
+                Sleep(2000);
                 return;
             }
 
+            Sales_records<<"+                                                                                                                   +"<<endl;
+            Sales_records<<"+                                                                                                                   +"<<endl;
+            Sales_records<<"+-------------------------------------------------------------------------------------------------------------------+"<<endl;
+            Sales_records<<"|                                              Gross Invoice                                                        |"<<endl;
+            Sales_records<<"+--------------+--------------------------+------------------------+-------------------------+----------------------+"<<endl;
+            Sales_records<<"|  Product ID  |                   Product Name                    |     Product Quantity    |     Product Price    |"<<endl;
+            Sales_records<<"+--------------+--------------------------+------------------------+-------------------------+----------------------+"<<endl;
+        
+
             string line;
             while (getline(Cart_database, line)) {
-                Sales_records << line << endl;
+
+                string p_id, p_name, p_price, p_quantity;
+                stringstream ss(line);
+                getline(ss, p_id, '$');
+                getline(ss, p_name, '$');
+                getline(ss, p_quantity, '$');
+                getline(ss, p_price, '$');
+
+                Sales_records << "| " << setw(12) << p_id << " | " << setw(49) << p_name << " | " << setw(23) << p_quantity << " | " << setw(20) << p_price << " |" << endl;
+                Sales_records<<"---------------------------------------------------------------------------------------------------------------------"<<endl;
+
+
             }
 
-            Sales_records << "Total Bill: " << total << " Taka" << endl;
-            Sales_records << "=============================" << endl;
+            Sales_records<<"+-------------------------------------------------------------------------------------------------------------------+"<<endl;
+            Sales_records<<"|                                                                                 Total Bill | "<< setw(15) << total<<" Taka |"<<endl;
+            Sales_records<<"+-------------------------------------------------------------------------------------------------------------------+"<<endl;
+            Sales_records<<"+                                                                                                                   +"<<endl;
+            Sales_records<<"+                                                                                                                   +"<<endl;
+            Sales_records<<"+===================================================================================================================+"<<endl;
 
-            cout << "Checkout recorded successfully!" << endl;
+            cout << "\t\t\t\tCheckout recorded successfully!" << endl;
+            Sleep(1500);
             Cart_database.close();
             Sales_records.close();
         }
@@ -740,19 +863,24 @@ class Cart{
 
             if (!Clean_Cart_database) {
                 cout << "Error opening Cart database file for cleaning." << endl;
+                Sleep(2000);
                 return;
             }
 
             Clean_Cart_database.close();
-            cout << "Cart data cleaned successfully!" << endl;
+            cout << "\t\t\t\tCart data cleaned successfully!" << endl;
+            Sleep(2000);
         }
 
-        void Sales_orca()
+        void sales_record_view()
         {
-            
-            C_top_nav();
-            cart_view();
-            C_caption();
+            Sales_record_database.open("Sales_records_database.txt", ios::in);
+            string line;
+            while (getline(Sales_record_database,line))
+            {
+                cout<<line<<"\n";
+            }
+            Sales_record_database.close();
         }
 
 };
@@ -768,6 +896,7 @@ int main()
     int choice;
     string sales_pw;
     string sales_un;
+    loadingBar();
 
     //start of op
     do{
@@ -782,9 +911,10 @@ int main()
             case 1:
             {
                system("cls");
+               top_nav();
                P1.stock_view();
+               caption();
                getch();
-               break;
             }
 
             //Login
@@ -830,8 +960,8 @@ int main()
                             top_nav();
                             cout << "\n\t\t\t\t\t---------------: WELCOME :--------------";
                             cout << "\n\t\t\t\t\t-----------:   SALES PANEL   :----------\n\n\n";
-                            cout << "\n\t\t\t\t\t            Press 1 to Make a Bill ";
-                            cout << "\n\t\t\t\t\t      Press 0 to Logout From Sales Panel \n\n\n\n";
+                            cout << "\n\t\t\t\t\t             (1) to Make a Bill ";
+                            cout << "\n\t\t\t\t\t       (0) to Logout From Sales Panel   \n\n\n\n";
                             caption();
                             cin>>pressed;
                             switch (pressed)
@@ -847,8 +977,8 @@ int main()
                                         C1.C_top_nav();
                                         C1.cart_view();
                                         C1.C_caption();
-                                        cout << "\n\n\n\n\t\t\t\t\tPress 1 to add Item to the cart";
-                                        cout << "\n\t\t\t\t\tPress 2 to Place the order";
+                                        cout << "\n\n\n\t\t\t\t\t(1) Add Item to Cart";
+                                        cout <<       "\n\t\t\t\t\t(2) Place Order\n\n\n";
                                         caption();
                                         cin>>x_leb;
                                         if(x_leb == 1)
@@ -891,7 +1021,6 @@ int main()
                         goto login_main;
                     }
                 }
-
                 //Admin Login!!
                 case 2:
                 {
@@ -908,16 +1037,18 @@ int main()
                     o1.login(admin_un, admin_pw);
 
                     if (admin_login_states == false){
+                        caption();
                         Sleep(2000);
                         break;
                     }
                     else{
-                    cout << "\t\t\t\t\t         Login successful!\n";
-                    Sleep(2000);
-                    int a_choice;
+                        cout << "\t\t\t\t\t         Login successful!\n";
+                        caption();
+                        Sleep(2000);
+                        int a_choice;
 
-                    //Admin Panel
-                    do{
+                        //Admin Panel
+                        do{
                         admin_panel:
                         system("cls");
                         top_nav();
@@ -1002,13 +1133,13 @@ int main()
                                     top_nav();
                                     cout<<"\n\n\n\n\n\n\t\t\t\t\tWhich Item you want to Remove!!\n";
                                     P1.stock_view();
+                                    caption();
                                     cout<<"\n\n\t\t\t\t\tEnter data to remove Element\n Enter Product Id   :";
                                     cin>>id;
-                                    cout<<"\n\n\t\t\t\t\t Enter the Quantity :";
+                                    cout<<"\nEnter the Quantity :";
                                     cin>>quantity;
                                     P1.removeGoodsFromInventory(id, quantity);
-                                    caption();
-                                    goto admin_panel;
+                                    goto Inventory_panel;
                                 }
 
                                 case 5:
@@ -1023,24 +1154,32 @@ int main()
                         //SALES MANAGEMENT PANEL
                         case 2:
                         {
+                            sales_panel:
                             system("cls");
                             int admin_choice_case_2;
                             top_nav();
-                            cout << "\n\t\t\t\t\t-------: SALES MANAGEMENT PANEL :-------\n\n\n";
-                            cout << "\t\t\t\t\t\t1.All Sale Invoices\n";
-                            cout << "\t\t\t\t\t\t2.Back To Admin Panel\n";
+                            cout << "\n\t\t\t\t\t-------: Sales Management Panel :-------\n\n\n";
+                            cout << "\t\t\t\t\t\t   1. All Sale Invoices\n";
+                            cout << "\t\t\t\t\t\t   2. Back To Admin Panel\n";
                             caption();
                             cin >> admin_choice_case_2;
                             switch (admin_choice_case_2)
                             {
                             case 1:
-                                /* code */
-                                break;
-                            
-                            default:
-                                break;
+                            {
+                                system("cls");
+                                top_nav();
+                                C1.sales_record_view();
+                                getch();
+                                goto sales_panel;
                             }
-                            break;
+
+                            case 2:
+                            {
+                                goto admin_panel;
+                            }                             
+
+                            }
 
                         }//Sales-end
                         
@@ -1285,7 +1424,7 @@ int main()
                 }
 
                 }
-
+                //return to open
                 case 3:
                 {
                     goto open_bar;
@@ -1294,7 +1433,7 @@ int main()
                 {
                     system("cls");
                     top_nav();
-                    cout<<"\n\n\n\n\t\t\t\t\twrong input !!\n\n\n\n\n";
+                    cout << "\n\n\n\n\t\t\t\t\tInvalid Input! Please select a valid option.\n\n\n\n\n";
                     caption();
                     Sleep(2000);
                     goto login_main;
@@ -1307,14 +1446,16 @@ int main()
                     return 0;
             }
             default:
-                {
-                    system("cls");
-                    top_nav();
-                    cout<<"\n\n\n\n\t\t\t\t\twrong input !!\n\n\n\n\n";
-                    caption();
-                    Sleep(2000);
-                    goto open_bar;
-                }
+            {
+                system("cls");
+                top_nav();
+                cout << "\n\n\n\n\t\t\t\t\tInvalid Input! Please select a valid option.\n\n\n\n\n";
+                caption();
+                Sleep(2000);
+                goto open_bar;
+            }
+            
+           
 
         }
 
