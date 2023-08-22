@@ -1,11 +1,11 @@
-01$pokemon$game$700$10
-02$poasdkemon$game$75400$28
-03$asdpokemon$fggame$700$9
-04$pokemsedon$game$7054650$20
-05$pokeasdmon$game$7500$30
-09$pokemodasdn$game$7040$35
-10$pokasdasdemon$gamasde$200$20
-10$pasokemon$gamasde$200$20
-10$pokdasemon$asdgame$200$20
-10$pokemoasdn$gasdme$200$20
-10$pokasdemon$gaame$200$20
+0001$Rice-25kg$Grains$1750$28
+0002$Rice-50kg$Grains$3500$30$
+0003$Breadcrumbs$Grains$100$70$
+0004$Pasta$Grains$50$30$
+0005$Sandwich Bread$Grains$50$30$
+0006$Chicken-/kg$Meat/Protein$175$30$
+0007$Eggs-12piece$Meat/Protein$200$30$
+0008$Ground Beef-/kg$Meat/Protein$700$30$
+0009$Milk-1lr$Dairy$90$30$
+0010$Butter-250gm$Dairy$290$30$
+0011$Yogurt-500ml$Dairy$120$30$
